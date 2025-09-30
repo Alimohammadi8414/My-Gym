@@ -1,4 +1,4 @@
-// ignore_for_file: must_be_immutable
+// ignore_for_file: must_be_immutable, deprecated_member_use
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -112,6 +112,8 @@ class _AddEditScreenState extends State<AddEditScreen> {
                   validator: (value) {
                     if (value!.isEmpty) {
                       return LocaleKeys.error_textfield_phone.tr();
+                    } else if (!value.startsWith('09')) {
+                      return 'شماره تلفن باید با "09" شروع شود';
                     }
                     return null;
                   },
@@ -317,7 +319,7 @@ class _AddEditScreenState extends State<AddEditScreen> {
                         backgroundColor: Theme.of(context).colorScheme.primary),
                     onPressed: () async {
                       if (formKey.currentState!.validate()) {
-                        widget.user.fullname = fullNameController.text;
+                        widget.user.fullname = fullNameController.text.trim();
                         widget.user.price =
                             int.parse(priceController.text.replaceAll(",", ''));
                         widget.user.phone = phoneController.text;

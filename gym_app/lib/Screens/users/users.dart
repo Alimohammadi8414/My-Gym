@@ -149,7 +149,8 @@ class _UsersScreenState extends State<UsersScreen> {
                   if (value.isEmpty) {
                     UserService.getuser();
                   } else {
-                    UserService.getUserByFullname(value);
+                    var valuetrimed = value.trim();
+                    UserService.getUserByFullname(valuetrimed);
                   }
                 },
                 decoration: InputDecoration(
