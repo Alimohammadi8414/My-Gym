@@ -39,7 +39,7 @@ class UserService {
 
   // اضافه کردن کاربر
 
- static Future<User> adduser(User user) async {
+  static Future<User> adduser(User user) async {
     var response = await httpclient.post('zxV4xE/gym', data: user.tojson());
     if (response.statusCode == 200 || response.statusCode == 201) {
       await getuser();
@@ -49,7 +49,8 @@ class UserService {
   }
 
 // ویرایش کاربران
-  static Future<User> updateUser({required User user, required int userid}) async {
+  static Future<User> updateUser(
+      {required User user, required int userid}) async {
     var response =
         await httpclient.put('zxV4xE/gym/$userid', data: user.tojson());
     if (response.statusCode == 200 || response.statusCode == 201) {
@@ -60,7 +61,7 @@ class UserService {
   }
 // خذف کاربر
 
-static Future<User> deleteUser(int userId) async {
+  static Future<User> deleteUser(int userId) async {
     var response = await httpclient.delete(
       'zxV4xE/gym/$userId',
     );
